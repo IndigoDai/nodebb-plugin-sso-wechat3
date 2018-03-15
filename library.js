@@ -30,8 +30,8 @@ Wechat.getStrategy = function(strategies, callback) {
         client: settings.weclient ? 'wechat' : 'website',
         scope: "snsapi_userinfo",
         callbackURL: nconf.get('url') + '/auth/wechat/callback'
-      }, function(accessToken, refreshToken, profile, done) {
-				console.log("get wechat profile: ", profile);
+      }, function(accessToken, refreshToken, profile, expiresIn, done) {
+				console.log("get wechat profile: ", profile, expiresIn);
         Wechat.login(profile.openid, profile.nickname, profile.headimgurl, function(err, user) {
           if (err) {
             return done(err);
