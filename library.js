@@ -31,7 +31,8 @@ Wechat.getStrategy = function(strategies, callback) {
         scope: "snsapi_userinfo",
         callbackURL: nconf.get('url') + '/auth/wechat/callback'
       }, function(accessToken, refreshToken, profile, done) {
-        Wechat.login(profile.id, profile.displayName, function(err, user) {
+				console.log("get wechat profile: ", profile);
+        Wechat.login(profile.openid, profile.nickname, profile.headimgurl, function(err, user) {
           if (err) {
             return done(err);
           }
@@ -86,7 +87,7 @@ Wechat.addMenuItem = function(custom_header, callback) {
   callback(null, custom_header);
 };
 
-Wechat.login = function(wxid, handle, callback) {
+Wechat.login = function(wxid, handle, pictureUrl, callback) {
   Wechat.getUidByWechatId(wxid, function(err, uid) {
     if (err) {
       return callback(err);
@@ -98,21 +99,36 @@ Wechat.login = function(wxid, handle, callback) {
         uid: uid
       });
     } else {
-      // New User
+			// New User
+			var success = function(uid) {
+				// Save google-specific information to the user
+				User.setUserField(uid, 'wxid', wxid);
+				db.setObjectField('wxid:uid', wxid, uid);
+
+				async.waterfall([
+					async.apply(User.getUserFields, uid, ['picture', 'firstName', 'lastName', 'fullname']),
+					function(info, next) {
+						if (!info.picture && pictureUrl) {
+							User.setUserField(uid, 'uploadedpicture', pictureUrl);
+							User.setUserField(uid, 'picture', pictureUrl);
+						}
+						next();
+					}
+				], function (err) {
+					callback(err, {
+						uid: uid
+					});
+				});
+			};
+
       user.create({
-        username: handle
+        username: handle,
+				registerFrom: 'wechat'
       }, function(err, uid) {
         if (err) {
           return callback(err);
         }
-
-        // Save wechat-specific information to the user
-        user.setUserField(uid, 'wxid', wxid);
-        db.setObjectField('wxid:uid', wxid, uid);
-
-        callback(null, {
-          uid: uid
-        });
+				success(uid);
       });
     }
   });
