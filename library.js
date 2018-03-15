@@ -102,15 +102,15 @@ Wechat.login = function(wxid, handle, pictureUrl, callback) {
 			// New User
 			var success = function(uid) {
 				// Save google-specific information to the user
-				User.setUserField(uid, 'wxid', wxid);
+				user.setUserField(uid, 'wxid', wxid);
 				db.setObjectField('wxid:uid', wxid, uid);
 
 				async.waterfall([
-					async.apply(User.getUserFields, uid, ['picture', 'firstName', 'lastName', 'fullname']),
+					async.apply(user.getUserFields, uid, ['picture', 'firstName', 'lastName', 'fullname']),
 					function(info, next) {
 						if (!info.picture && pictureUrl) {
-							User.setUserField(uid, 'uploadedpicture', pictureUrl);
-							User.setUserField(uid, 'picture', pictureUrl);
+							user.setUserField(uid, 'uploadedpicture', pictureUrl);
+							user.setUserField(uid, 'picture', pictureUrl);
 						}
 						next();
 					}
