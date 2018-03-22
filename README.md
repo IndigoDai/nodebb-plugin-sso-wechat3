@@ -2,6 +2,11 @@
 
 NodeBB 微信登录插件，支持网页版、公众号和小程序。
 
+## 参考：
+官方教程：https://docs.nodebb.org/development/plugins/
+Hooks列表：https://github.com/NodeBB/NodeBB/wiki/Hooks
+官方论坛：https://community.nodebb.org/category/7/nodebb-plugins
+
 ## 安装
 
     $ npm install nodebb-plugin-sso-wechat2
