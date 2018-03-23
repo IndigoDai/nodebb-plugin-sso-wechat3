@@ -1,11 +1,11 @@
 {
-  "name": "nodebb-plugin-sso-wechat2",
-  "version": "0.2.3",
+  "name": "nodebb-plugin-sso-wechat3",
+  "version": "0.1.0",
   "description": "NodeBB 微信登录插件，支持网页版、公众号和小程序。",
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/revir/nodebb-plugin-sso-wechat2"
+    "url": "https://github.com/MKFMIKU/nodebb-plugin-sso-wechat3"
   },
   "keywords": [
     "nodebb",
@@ -16,12 +16,12 @@
     "registration"
   ],
   "author": {
-    "name": "River",
-    "email": "revir.qing@gmail.com"
+    "name": "Kangfu Mei",
+    "email": "mikumkf@gmail.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/revir/nodebb-plugin-sso-wechat2/issues"
+    "url": "https://github.com/MKFMIKU/nodebb-plugin-sso-wechat3/issues"
   },
   "readme": "",
   "readmeFilename": "README.md",
