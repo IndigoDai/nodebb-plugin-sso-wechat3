@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-2 col-xs-12 settings-header">Wechat SSO 2</div>
+    <div class="col-sm-2 col-xs-12 settings-header">Wechat SSO 3</div>
     <div class="col-sm-10 col-xs-12">
         <div class="alert alert-info">
             <p>

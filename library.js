@@ -12,17 +12,22 @@ var user = module.parent.require('./user'),
 
 //var constants = module.parent.require('../plugin_configs/sso_wechat_constants');
 var constants = Object.freeze({
-  'name': "Wechat2",
+  'name': "Wechat3",
   'admin': {
     'icon': 'fa-weixin',
-    'route': '/plugins/sso-wechat2'
+    'route': '/plugins/sso-wechat3'
   }
 });
 
 var Wechat = {};
 
+Wechat.checkWechat = function(data, callback) {
+  console.log(data);
+  callback(null, data);
+}
+
 Wechat.getStrategy = function(strategies, callback) {
-  meta.settings.get('sso-wechat2', function(err, settings) {
+  meta.settings.get('sso-wechat3', function(err, settings) {
     if (!err && settings.id && settings.secret) {
       passport.use(new passportWechat({
         appID: settings.id,
@@ -160,13 +165,13 @@ Wechat.deleteUserData = function(uid, callback) {
 
 Wechat.init = function(data, callback) {
   function renderAdmin(req, res) {
-    res.render('admin/plugins/sso-wechat2', {
+    res.render('admin/plugins/sso-wechat3', {
       callbackURL: nconf.get('url') + '/auth/wechat/callback'
     });
   }
 
-  data.router.get('/admin/plugins/sso-wechat2', data.middleware.admin.buildHeader, renderAdmin);
-  data.router.get('/api/admin/plugins/sso-wechat2', renderAdmin);
+  data.router.get('/admin/plugins/sso-wechat3', data.middleware.admin.buildHeader, renderAdmin);
+  data.router.get('/api/admin/plugins/sso-wechat3', renderAdmin);
 
   callback();
 };
