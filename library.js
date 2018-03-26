@@ -21,9 +21,13 @@ var constants = Object.freeze({
 
 var Wechat = {};
 
-Wechat.checkWechat = function(data, callback) {
-  console.log("registerCheck" + data);
-  callback(null, data);
+function wechatCheck(req, res, next) {
+  if (req.get("user-agent").match(/micromessenger/i)){
+    if (!req.user) {
+      res.json({'code': 500});
+    }
+  }
+  res.json({'code': 200});
 }
 
 Wechat.getStrategy = function(strategies, callback) {
@@ -44,7 +48,6 @@ Wechat.getStrategy = function(strategies, callback) {
           done(null, user);
         });
       }));
-
       strategies.push({
         name: 'wechat',
         url: '/auth/wechat',
@@ -170,6 +173,7 @@ Wechat.init = function(data, callback) {
     });
   }
 
+  data.router.get('/checkwechat', wechatCheck);
   data.router.get('/admin/plugins/sso-wechat3', data.middleware.admin.buildHeader, renderAdmin);
   data.router.get('/api/admin/plugins/sso-wechat3', renderAdmin);
 

@@ -6,7 +6,6 @@
 	"library": "./library.js",
 	"hooks": [
 		{ "hook": "static:app.load", "method": "init" },
-		{ "hook": "filter:register.check", "method": "checkWechat" },
 		{ "hook": "filter:auth.init", "method": "getStrategy" },
 		{ "hook": "filter:user.delete", "method": "deleteUserData" },
 		{ "hook": "filter:auth.list", "method": "getAssociation" },
@@ -15,5 +14,8 @@
 	"templates": "./templates",
 	"acpScripts": [
 		"public/admin.js"
+	],
+	"scripts": [
+		"public/client.js"
 	]
 }

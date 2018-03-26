@@ -3,10 +3,10 @@
     <div class="col-sm-10 col-xs-12">
         <div class="alert alert-info">
             <p>
-                请先在微信开发者中心注册。
+                请先在微信公众平台开启 "网页授权获取用户基本信息"，填入微信公众平台AppID 和密钥。本插件默认开启 "当用户未登陆并且从微信进入的时候申请微信登陆"
             </p>
         </div>
-        <form class="sso-wechat2-settings">
+        <form class="sso-wechat3-settings">
             <div class="form-group">
                 <label for="id">App ID</label>
                 <input type="text" name="id" title="App ID" class="form-control" placeholder="App ID">

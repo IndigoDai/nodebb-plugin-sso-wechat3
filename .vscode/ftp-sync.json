@@ -1,0 +1,23 @@
+{
+    "remotePath": "/home/ubuntu/nodebb/node_modules/nodebb-plugin-sso-wechat3/",
+    "host": "ec2-52-80-146-11.cn-north-1.compute.amazonaws.com.cn",
+    "username": "ubuntu",
+    "port": 22,
+    "secure": true,
+    "protocol": "sftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": "C:/xianyu.pem",
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "uploadOnSave": false,
+        "extensionsToInclude": [],
+        "path": ""
+    }
+}

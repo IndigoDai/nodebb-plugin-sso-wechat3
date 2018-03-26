@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-sso-wechat3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "NodeBB 微信登录插件，支持网页版、公众号和小程序。",
   "main": "library.js",
   "repository": {
