@@ -22,7 +22,7 @@ var constants = Object.freeze({
 var Wechat = {};
 
 Wechat.checkWechat = function(data, callback) {
-  console.log(data);
+  console.log("registerCheck" + data);
   callback(null, data);
 }
 
