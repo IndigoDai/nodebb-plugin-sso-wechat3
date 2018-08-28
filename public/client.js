@@ -2,12 +2,13 @@ $(document).ready(function() {
     console.log("====> Checking Wechat");
     if (!app.uid) {
         var domain = window.location.hostname;
+        console.log('domain:'+ domain);
         $.get('http://' + domain + '/checkwechat', function(res) {
             if (Number(res.code) !== 200) {
                 console.log("====> Redirect to wechat");
                 localStorage.last_url = encodeURIComponent(window.location.href);
                 localStorage.login = 1;
-                window.location = "http://' + domain + '/auth/wechat";
+                window.location = 'http://' + domain + '/auth/wechat';
             } else {
                 if (Number(localStorage.login) !== 0) {
                     const last_url = decodeURIComponent(localStorage.last_url);
