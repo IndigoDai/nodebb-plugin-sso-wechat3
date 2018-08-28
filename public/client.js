@@ -2,7 +2,6 @@ $(document).ready(function() {
     console.log("====> Checking Wechat");
     if (!app.uid) {
         var domain = window.location.hostname;
-        console.log('domain:'+ domain);
         $.get('http://' + domain + '/checkwechat', function(res) {
             if (Number(res.code) !== 200) {
                 console.log("====> Redirect to wechat");
