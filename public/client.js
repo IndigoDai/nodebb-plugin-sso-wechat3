@@ -1,12 +1,13 @@
 $(document).ready(function() {
     console.log("====> Checking Wechat");
     if (!app.uid) {
-        $.get('http://shenqibuluo.com/checkwechat', function(res) {
+        var domain = window.location.hostname;
+        $.get('http://' + domain + '/checkwechat', function(res) {
             if (Number(res.code) !== 200) {
                 console.log("====> Redirect to wechat");
                 localStorage.last_url = encodeURIComponent(window.location.href);
                 localStorage.login = 1;
-                window.location = "http://shenqibuluo.com/auth/wechat";
+                window.location = "http://' + domain + '/auth/wechat";
             } else {
                 if (Number(localStorage.login) !== 0) {
                     const last_url = decodeURIComponent(localStorage.last_url);
